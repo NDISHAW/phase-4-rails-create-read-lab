@@ -1,0 +1,16 @@
+class PlantsController < ApplicationController
+
+    def index
+        plants = Plant.all
+        render json: plants
+    end
+
+    def show
+        plants = Plant.find_by(id: params[:id])
+        if plant
+            render json: plant
+        else
+            render json: { error: "plant not found" }, status: :not_found
+        end
+    end
+end
